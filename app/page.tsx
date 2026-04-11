@@ -19,6 +19,11 @@ export default async function Home() {
         {story?.content?.Title}
       </h1>
 
+      <h1 className="text-4xl font-bold text-black">
+        this is a storyblok site
+      </h1>
+
+
       <p className="mt-4 text-gray-600">
         {story?.content?.Description}
       </p>
