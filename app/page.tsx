@@ -17,6 +17,8 @@ export default async function Home() {
         {story?.content?.Title}
       </h1>
 
+      storyblok site!
+
       <p className="mt-4 text-gray-600">
         {story?.content?.Description}
       </p>
