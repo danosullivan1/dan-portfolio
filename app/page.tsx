@@ -1,27 +1,49 @@
 export default async function Home() {
   const res = await fetch(
     `https://api.storyblok.com/v2/cdn/stories/home?token=${process.env.STORYBLOK_TOKEN}&version=draft`,
-    { next: { revalidate: 0 } }
+    { cache: "no-store" }
   );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch Storyblok data");
-  }
-
   const data = await res.json();
-  const story = data.story;
+  const story = data?.story;
 
   return (
-    <main className="p-10">
-      <h1 className="text-4xl font-bold">
-        {story?.content?.Title}
-      </h1>
+    <main className="min-h-screen bg-white text-black">
+      
+      {/* HERO */}
+      <section className="flex flex-col items-center justify-center text-center px-6 py-32">
+        <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
+          {story?.content?.Title || "Your Name"}
+        </h1>
 
-      storyblok site!
+        <p className="mt-6 text-lg text-gray-600 max-w-xl">
+          {story?.content?.Description || "Building modern web apps with Next.js"}
+        </p>
 
-      <p className="mt-4 text-gray-600">
-        {story?.content?.Description}
-      </p>
+        <div className="mt-8 flex gap-4">
+          <a
+            href="#projects"
+            className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition"
+          >
+            Button
+          </a>
+
+          <a
+            href="#contact"
+            className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
+          >
+            Contact
+          </a>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section className="max-w-3xl mx-auto px-6 py-20 border-t">
+        <h2 className="text-2xl font-semibold mb-4">About</h2>
+        <p className="text-gray-600 leading-relaxed">
+          this is a storyblok site
+        </p>
+      </section>
     </main>
   );
 }
