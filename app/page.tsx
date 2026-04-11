@@ -1,26 +1,21 @@
-import { getStoryblokApi } from "@storyblok/react/rsc";
-
 export default async function Home() {
-  const token = process.env.STORYBLOK_TOKEN;
-  const storyblokApi = getStoryblokApi();
+  const res = await fetch(
+    `https://api.storyblok.com/v2/cdn/stories/home?token=${process.env.STORYBLOK_TOKEN}&version=draft`,
+    { next: { revalidate: 0 } }
+  );
 
-  const { data } = await storyblokApi.get("cdn/stories/home", {
-    version: "draft",
-    ...(token ? {} : {}),
-  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch Storyblok data");
+  }
 
-  const story = data?.story;
+  const data = await res.json();
+  const story = data.story;
 
   return (
     <main className="p-10">
       <h1 className="text-4xl font-bold">
         {story?.content?.Title}
       </h1>
-
-      <h1 className="text-4xl font-bold text-black">
-        this is a storyblok site
-      </h1>
-
 
       <p className="mt-4 text-gray-600">
         {story?.content?.Description}
