@@ -1,14 +1,11 @@
-import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
-
-storyblokInit({
-  accessToken: process.env.STORYBLOK_TOKEN,
-  use: [apiPlugin],
-});
+import { getStoryblokApi } from "@storyblok/react/rsc";
 
 export default async function Home() {
-  const { getStoryblokApi } = await import("@storyblok/react/rsc");
-
   const storyblokApi = getStoryblokApi();
+
+  if (!process.env.STORYBLOK_TOKEN) {
+    throw new Error("Missing STORYBLOK_TOKEN");
+  }
 
   const { data } = await storyblokApi.get("cdn/stories/home", {
     version: "draft",
