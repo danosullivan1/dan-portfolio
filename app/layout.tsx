@@ -1,5 +1,8 @@
+import "@/lib/storyblok";
+
 import type { Metadata } from "next";
 import "./globals.css";
+import StoryblokProvider from "../components/StoryblokProvider";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -15,41 +18,29 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-white text-black">
 
-        {/* NAV */}
-        <header className="w-full border-b">
-          <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <StoryblokProvider>
+          {/* NAV */}
+          <header className="w-full border-b">
+            <nav className="max-w-5xl mx-auto px-6 py-4 flex justify-between">
+              <a href="/" className="font-bold text-lg">Home</a>
 
-            <a href="/" className="font-bold text-lg">
-              
-            </a>
+              <div className="flex gap-6 text-sm">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/posts">Posts</a>
+                <a href="/contact">Contact</a>
+              </div>
+            </nav>
+          </header>
 
-            <div className="flex gap-6 text-sm">
-              <a href="/" className="hover:underline">
-                Home
-              </a>
-              <a href="/about" className="hover:underline">
-                About
-              </a>
-              <a href="/posts" className="hover:underline">
-                Posts
-              </a>
-              <a href="/contact" className="hover:underline">
-                Contact
-              </a>
-            </div>
+          {/* PAGE CONTENT */}
+          <main className="flex-1">{children}</main>
 
-          </nav>
-        </header>
-
-        {/* PAGE CONTENT */}
-        <main className="flex-1">
-          {children}
-        </main>
-
-        {/* FOOTER */}
-        <footer className="border-t py-6 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()}
-        </footer>
+          {/* FOOTER */}
+          <footer className="border-t py-6 text-center text-sm text-gray-500">
+            © {new Date().getFullYear()}
+          </footer>
+        </StoryblokProvider>
 
       </body>
     </html>
