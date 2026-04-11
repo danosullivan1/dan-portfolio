@@ -1,37 +1,44 @@
-export default function Home() {
+import { getStoryblokApi } from "@storyblok/react/rsc";
+
+export default async function Home() {
+  const storyblokApi = getStoryblokApi();
+
+  const { data } = await storyblokApi.get("cdn/stories/home", {
+    version: "draft",
+  });
+
+  const story = data.story;
+
   return (
-    <main className="min-h-screen bg-white text-gray-900">
-      {/* Container */}
-      <div className="mx-auto max-w-5xl px-6 py-16">
+    <main className="min-h-screen flex items-center justify-center px-6 bg-white">
+      <div className="max-w-2xl text-center space-y-6">
         
-        {/* HERO */}
-        <section className="mb-20">
+        {/* Title */}
+        <h1 className="text-5xl font-bold tracking-tight text-black">
+          {story?.content?.Title}
+        </h1>
 
-          <h1 className="text-5xl font-bold tracking-tight mb-6">
-            Hey, I’m Dan 👋
-          </h1>
+        {/* Description */}
+        <p className="text-lg text-black">
+          {story?.content?.Description}
+        </p>
 
-          <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">
-            this is a storyblok website
-          </p>
-        </section>
-
-        {/* CONTACT */}
-        <section id="contact">
-          <h2 className="text-2xl font-semibold mb-4">Contact</h2>
-
-          <p className="text-gray-600 mb-4">
-            Want to collaborate or chat about a project?
-          </p>
+        {/* CTA Buttons */}
+        <div className="flex gap-4 justify-center pt-4">
+          <a
+            href="#projects"
+            className="px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-800 transition"
+          >
+            View Projects
+          </a>
 
           <a
-            href="mailto:your@email.com"
-            className="text-blue-600 hover:underline"
+            href="mailto:you@example.com"
+            className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-black"
           >
-            your@email.com
+            Contact
           </a>
-        </section>
-
+        </div>
       </div>
     </main>
   );
