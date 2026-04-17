@@ -1,12 +1,16 @@
 import { storyblokInit, apiPlugin, StoryblokComponent } from "@storyblok/react";
 import Hero from "@/components/blocks/Hero";
-import Grid from "@/components/blocks/Grid";
+import Intro from "@/components/blocks/Intro";
+import ProjectsSmall from "@/components/blocks/ProjectsSmall";
+import CTA from "@/components/blocks/CTA";
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_TOKEN || "",
   use: [apiPlugin],
   components: {
     hero: Hero,
-    grid: Grid
+    intro: Intro,
+    projectssmall: ProjectsSmall,
+    cta: CTA,
   },
 });
