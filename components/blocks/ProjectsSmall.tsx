@@ -25,19 +25,23 @@ export default function ProjectsSmall({ blok }: any) {
 
   return (
     <section {...storyblokEditable(blok)} className="bg-[#1e1e1e] py-24">
-      <div className="w-full px-12">
+      <div className="w-full px-6 lg:px-12">
 
-        <div className="pb-6 mb-12">
+<div className="flex justify-between items-center mb-12">
+        <div className="">
           <h1 className="text-5xl font-normal text-white">
-            {blok.heading}
+            {blok.heading}Heading here
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-2">
+        <div className="text-white text-2xl">See all</div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-2">
           {blok.cards?.map((card: any, index: number) => (
             <div
               key={card._uid}
-              className={`${index === 2 ? "col-span-2" : "col-span-1"} flex flex-col`}
+              className={`${index === 2 ? "col-span-1 lg:col-span-2" : "col-span-1"} flex flex-col`}
             >
               <div className="overflow-hidden h-[450px]">
                 <img
