@@ -6,6 +6,7 @@ import Intro from "@/components/blocks/Intro";
 import ProjectsSmall from "@/components/blocks/ProjectsSmall";
 import CTA from "@/components/blocks/CTA";
 import Wordsearch from "./blocks/Wordsearch";
+import RecentTrip from "@/components/blocks/RecentTrip";
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_TOKEN!,
@@ -16,7 +17,7 @@ storyblokInit({
     projectssmall: ProjectsSmall,
     cta: CTA,
     wordsearch: Wordsearch,
-
+    recenttrip: RecentTrip,
   },
 });
 
