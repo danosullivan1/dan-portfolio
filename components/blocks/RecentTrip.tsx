@@ -2,21 +2,13 @@
 import { storyblokEditable } from "@storyblok/react";
 import { useRef, useCallback } from "react";
 
-const COLS = 20;
-const ROWS = 8;
-
-const WORDS: { word: string; row: number; col: number }[] = [
-  { word: "hello", row: 2, col: 3 },
-  { word: "world", row: 5, col: 4 },
-];
+const COLS = 27;
+const ROWS = 6;
 
 function buildGrid() {
-  const cells = Array(COLS * ROWS).fill("a");
-  WORDS.forEach(({ word, row, col }) => {
-    [...word].forEach((char, i) => {
-      const index = row * COLS + col + i;
-      if (index < COLS * ROWS) cells[index] = char;
-    });
+  const pattern = ["d", "a", "n"];
+  const cells = Array.from({ length: COLS * ROWS }, (_, i) => {
+    return pattern[i % pattern.length];
   });
   return cells;
 }
@@ -56,14 +48,23 @@ export default function RecentTrip({ blok }: any) {
       const ring = Math.max(dr, dc);
 
       if (ring === 0) {
-        cell.style.color = "#ff4500";
+        cell.style.color = "#b6fcb6"; // orange-red
         cell.style.fontWeight = "900";
       } else if (ring === 1) {
-        cell.style.color = "#ff9900";
+        cell.style.color = "#ff9900"; // orange
         cell.style.fontWeight = "700";
       } else if (ring === 2) {
-        cell.style.color = "#ffdd00";
+        cell.style.color = "#ffdd00"; // yellow
         cell.style.fontWeight = "500";
+      } else if (ring === 3) {
+        cell.style.color = "#66ccff"; // light blue
+        cell.style.fontWeight = "400";
+      } else if (ring === 4) {
+        cell.style.color = "#b6fcb6"; // pale green
+        cell.style.fontWeight = "400";
+      } else if (ring === 5) {
+        cell.style.color = "#d8b6ff"; // light purple
+        cell.style.fontWeight = "400";
       } else {
         cell.style.color = "white";
         cell.style.fontWeight = "400";
@@ -82,17 +83,17 @@ cell.style.fontWeight = "400";
   return (
     <section
       {...storyblokEditable(blok)}
-      className="h-screen bg-black text-white py-0"
+      className="h-auto bg-black text-white py-4"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div style={{ display: "grid", gridTemplateColumns: `repeat(${COLS}, 1fr)`, gap: "8px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: `repeat(${COLS}, 1fr)`, gap: "3px" }}>
         {baseCells.map((char, i) => (
           <div
             className="text-8xl font-bold"
             key={i}
             ref={(el) => { cellRefs.current[i] = el; }}
-            style={{ transition: "color 0.3s ease, font-weight 0.3s ease", color: "white", fontWeight: "400" }}
+            style={{ transition: "color 0.3s ease, font-weight 0.3s ease", color: "ffdd00", fontWeight: "400" }}
           >
             {char}
           </div>

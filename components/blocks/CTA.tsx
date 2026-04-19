@@ -86,10 +86,10 @@ setTimeout(() => {
   return (
     <section
       {...storyblokEditable(blok)}
-      className="relative bg-[#0A1A3A] py-20 h-[70vh] overflow-hidden flex items-center"
+      className="relative bg-blue-200 py-20 h-[70vh] overflow-hidden flex items-center"
     >
       <div className="w-full px-12">
-        <h3 className="text-5xl font-normal text-white max-w-[500px]">
+        <h3 className="text-5xl font-normal text-black max-w-[500px]">
           {blok.heading || "Heading goes here"}
         </h3>
       </div>

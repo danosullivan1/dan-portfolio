@@ -53,14 +53,12 @@ export default function ProjectsSmall({ blok }: any) {
         }}
       >
         <div style={{
-          background: "green",
-          color: "white",
-          padding: "10px 18px",
-          fontSize: "28px",
+          color: "#C4E750",
+          padding: "8px 14px",
+          fontSize: "34px",
           fontWeight: 500,
           letterSpacing: "0.05em",
-          textTransform: "uppercase",
-          borderRadius: "2px",
+          borderRadius: "0px",
           whiteSpace: "nowrap",
         }}>
           View
@@ -102,7 +100,7 @@ export default function ProjectsSmall({ blok }: any) {
                   />
                 </div>
                 <div className="pt-5">
-                  <h3 className="text-3xl font-serif font-normal text-white mb-2">
+                  <h3 className="text-4xl font-serif font-normal text-white mb-2">
                     {card.title}
                   </h3>
                   <p className="text-lg text-white font-light leading-relaxed">
