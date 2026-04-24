@@ -344,7 +344,7 @@ function RotatingStatue() {
 
 const BUILD  = ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS"];
 const MOTION = ["Figma", "GSAP", "Three.js", "WebGL"];
-const DESIGN = ["Storyblok", "WordPress", "Craft CMS", "Shopify"];
+const DESIGN = ["Storyblok", "WordPress", "Shopify"];
 
 
 export default function Skills({ blok }: any) {
