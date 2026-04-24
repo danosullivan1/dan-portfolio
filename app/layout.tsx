@@ -78,7 +78,7 @@ export default async function RootLayout({
     <a
       key={item._uid}
       href={item.url?.cached_url || item.url}
-      className="hover:text-blue-300 border-b border-white/40"
+      className="hover:text-[#9de782] border-b border-white/40"
     >
       {item.label}
     </a>
